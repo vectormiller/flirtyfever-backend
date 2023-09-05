@@ -14,7 +14,7 @@ def create_user(data: UserDTO.User, db: Session):
         db.refresh
     except Exception as e:
         print(e)
-    return user
+    return user.id
 
 def get_user(id: int, db: Session):
     return db.query(User).filter(User.id == id).first()
