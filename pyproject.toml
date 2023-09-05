@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "flirtyfever-backend"
+version = "0.1.0"
+description = ""
+authors = ["Victor Glebov <victorglebovv@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+sqlalchemy = "^2.0.20"
+psycopg2 = "^2.9.7"
+pydantic = "^2.3.0"
+pytypes = "^1.0b10"
+pydantic-settings = "^2.0.3"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.1"
+httpx = "^0.24.1"
+mypy = "^1.5.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
