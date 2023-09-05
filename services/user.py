@@ -27,7 +27,7 @@ def update_user(data: UserDTO.User, db: Session, id: int):
 
     db.add(user)
     db.commit()
-    db.refresh()
+    db.refresh(user)
 
 def remove_user(id: int, db: Session):
     user = db.query(User).filter(User.id == id).delete()
