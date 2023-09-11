@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from flirtyfever_backend.main import app
-from flirtyfever_backend.settings import settings
+from src.main import app
+from src.settings import settings
 
 
 def test_getResponse():
