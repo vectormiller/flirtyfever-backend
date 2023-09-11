@@ -14,6 +14,7 @@ psycopg2 = "^2.9.7"
 pydantic = "^2.3.0"
 pytypes = "^1.0b10"
 pydantic-settings = "^2.0.3"
+python-dotenv = "^1.0.0"
 
 
 [tool.poetry.group.test.dependencies]

@@ -8,7 +8,7 @@ from settings import settings
 
 router = APIRouter()
 
-@router.post(settings.MAIN_URL, tags=["user"])
+@router.post(settings.ROOT_URL, tags=["user"])
 async def create_user(data: UserDTO.User = None, db: Session = Depends(get_db)):
     return UserService.create_user(data, db)
 

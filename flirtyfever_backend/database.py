@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+from settings import settings
 
-SQLACLHEMY_URL = "postgresql+psycopg2://postgres:admin@localhost:5432/flirtyfever"
+SQLACLHEMY_URL = str(settings.DB_URL)
 
 engine = create_engine(
     SQLACLHEMY_URL
