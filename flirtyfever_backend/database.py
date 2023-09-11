@@ -14,4 +14,4 @@ def get_db():
     try:
         yield db
     finally:
-        db.close() # Does not work properly - no close method
+        db.close()
