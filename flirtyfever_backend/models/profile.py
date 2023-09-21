@@ -6,5 +6,5 @@ class Profile(Base):
     __tablename__ = 'profiles'
 
     id = Column(Integer, primary_key=True, index=True, unique=True, autoincrement=True)
-    user_id = Column(uuid4, ForeignKey("user.id"), nullable=False)
+    user_id = Column(uuid4, ForeignKey("users.id"), nullable=False)
     priority = Column(Integer)
