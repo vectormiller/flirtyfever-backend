@@ -6,4 +6,4 @@ class Gender(Base):
 
     id = Column(Integer, primary_key=True, index=True, unique=True, autoincrement=True)
     name = Column(String(25), index=True, nullable=False)
-    description = Column(String(255), nullable=True)
+    description = Column(String(255))
