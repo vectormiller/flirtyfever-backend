@@ -1,10 +1,17 @@
-from sqlalchemy import Boolean, Column, Integer, String, Identity
+from sqlalchemy import Boolean, Column, Integer, String, Identity, ForeignKey, TIMESTAMP
+from sqlalchemy.sql import func
 from ..database import Base
 
 class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, index=True, unique=True, autoincrement=True)
-    name = Column(String, index=True)
-    lastname = Column(String, index=True)
-    middlename = Column(String, index=True) # TODO: Make it optional
+    username = Column(String, index=True, nullable=False)
+    description = Column(String(255))
+    role_id = Column(Integer, ForeignKey("role.id"))
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    phone_number = Column(Integer, nullable=False)
+    gender_id = Column(Integer, ForeignKey("gender.id"))
+    city_id = Column(Integer, ForeignKey("city.id"))
+    rating = Column(Integer, server_default=30)
+    age = Column(Integer, nullable=False)
