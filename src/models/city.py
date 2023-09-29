@@ -11,4 +11,4 @@ class City(Base):
     id = Column(Identity, index=True, primary_key=True)
     name = Column(String(25), doc='Name of the city', nullable=False)
 
-    users = relationship('Users', back_populates='cities')
+    users = relationship('User', back_populates='city')

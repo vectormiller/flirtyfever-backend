@@ -24,9 +24,11 @@ class User(Base):
     age = Column(Integer, nullable=False)
     
 
-    roles = relationship('Roles', back_populates='users')
-    genders = relationship('Genders', back_populates='users')
-    cities = relationship('Cities', back_populates='users')
-    user_images = relationship('UserImages', back_populates='user')
-    from_actions = relationship('Actions', foreign_keys='[Actions.from_id]', back_populates='from_user')
-    to_actions = relationship('Actions', foreign_keys='[Actions.to_id]', back_populates='to_user')
+    role = relationship('Role', back_populates='users')
+    gender = relationship('Gender', back_populates='users')
+    city = relationship('City', back_populates='users')
+    user_images = relationship('UserImage', back_populates='user')
+    
+    actions = relationship('Action', foreign_keys='[Actions.from_id, Actions.to_id]', back_populates="user")
+    from_actions = relationship('Action', foreign_keys='[Actions.from_id]', back_populates='from_user')
+    to_actions = relationship('Action', foreign_keys='[Actions.to_id]', back_populates='to_user')

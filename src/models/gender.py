@@ -12,4 +12,4 @@ class Gender(Base):
     name = Column(String(25), doc='Name of the gender', nullable=False)
     description = Column(String(255), doc='Description of the gender', nullable=True)
 
-    users = relationship('Users', back_populates='genders')
+    users = relationship('User', back_populates='gender')

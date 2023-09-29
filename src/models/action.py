@@ -18,5 +18,6 @@ class Action(Base):
     type = Column(Identity, ForeignKey("action_types.id"), nullable=False)
     occurred_at = Column(TIMESTAMP, nullable=False, server_default=func.now())
 
-    from_user = relationship('Users', foreign_keys=[from_id], back_populates='from_actions')
-    to_user = relationship('Users', foreign_keys=[to_id], back_populates='to_actions')
+    user = relationship('User', back_populates='actions')
+    from_user = relationship('Users', foreign_keys='[from_id]', back_populates='from_actions')
+    to_user = relationship('Users', foreign_keys='[to_id]', back_populates='to_actions')
