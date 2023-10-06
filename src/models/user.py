@@ -2,7 +2,7 @@
 from uuid import uuid4
 
 # Third party imports
-from sqlalchemy import Column, ForeignKey, Identity, Integer, String, TIMESTAMP
+from sqlalchemy import Column, ForeignKey, Integer, String, TIMESTAMP
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
@@ -15,18 +15,18 @@ class User(Base):
     id = Column(uuid4(as_uuid=True), index=True, nullable=False, primary_key=True, unique=True)
     username = Column(String(25), index=True, nullable=False)
     description = Column(String(255), nullable=True)
-    role_id = Column(Identity, ForeignKey("roles.id"), nullable=False)
+    role_id = Column(Integer, ForeignKey("roles.id"), nullable=False)
     created_at = Column(TIMESTAMP, nullable=False, server_default=func.now())
     phone_number = Column(Integer, nullable=False, unique=True)
-    gender_id = Column(Identity, ForeignKey("genders.id"), nullable=False)
-    city_id = Column(Identity, ForeignKey("cities.id"), nullable=False)
+    gender_id = Column(Integer, ForeignKey("genders.id"), nullable=False)
+    city_id = Column(Integer, ForeignKey("cities.id"), nullable=False)
     rating = Column(Integer, default=30, nullable=False)
     age = Column(Integer, nullable=False)
     
 
-    roles = relationship('Roles', back_populates='users')
-    genders = relationship('Genders', back_populates='users')
-    cities = relationship('Cities', back_populates='users')
-    user_images = relationship('UserImages', back_populates='user')
-    from_actions = relationship('Actions', foreign_keys='[Actions.from_id]', back_populates='from_user')
-    to_actions = relationship('Actions', foreign_keys='[Actions.to_id]', back_populates='to_user')
+    role = relationship('Role', back_populates='users')
+    gender = relationship('Gender', back_populates='users')
+    city = relationship('City', back_populates='users')
+    user_images = relationship('UserImage', back_populates='user')
+    from_actions = relationship('Action', backref='from_user', foreign_keys='Action.from_id')
+    to_actions = relationship('Action', backref='to_user', foreign_keys='Action.to_id')
